@@ -39,3 +39,4 @@ class sensu::sensu::config {
     sqs_queue_url     => $sqs_queue_url,
     sns_topic_arn     => $sns_topic_arn,
   }
+}
