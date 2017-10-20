@@ -4,7 +4,7 @@
 #
 class sensu::snssqs::config
 
-  if $::sensu::_purge_config and !$::sensu::server and !$::sensu::client and !$::sensu::enterprise and $::sensu::transport_type != 'sensu' {
+  if $::sensu::_purge_config and !$::sensu::server and !$::sensu::client and !$::sensu::enterprise and $::sensu::transport_type != 'snssqs' {
     $ensure = 'absent'
   } else {
     $ensure = 'present'
