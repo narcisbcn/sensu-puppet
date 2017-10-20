@@ -57,6 +57,7 @@ class sensu::client (
         Class['sensu::package'],
         Sensu_client_config[$::fqdn],
         Class['sensu::rabbitmq::config'],
+        Class['sensu::snssqs::config'],
       ],
     }
   }

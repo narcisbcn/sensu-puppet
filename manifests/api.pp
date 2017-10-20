@@ -35,6 +35,7 @@ class sensu::api (
           Sensu_api_config[$::fqdn],
           Class['sensu::redis::config'],
           Class['sensu::rabbitmq::config'],
+          Class['sensu::snssqs::config'],
         ],
       }
     }

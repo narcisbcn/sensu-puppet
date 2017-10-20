@@ -100,6 +100,16 @@
 #
 # @param rabbitmq_heartbeat The integer value for the RabbitMQ heartbeat attribute
 #
+# @param 
+#
+# @param 
+#
+# @param 
+#
+# @param 
+#
+# @param 
+#
 # @param redis_host Hostname of redis to be used by sensu
 #
 # @param redis_port Redis port to be used by sensu
@@ -345,6 +355,11 @@ class sensu (
   Variant[Undef,Integer,Pattern[/^(\d+)$/]] $rabbitmq_prefetch = undef,
   Variant[Undef,Hash,Array]                  $rabbitmq_cluster = undef,
   Variant[Undef,Integer,Pattern[/^(\d+)$/]] $rabbitmq_heartbeat = undef,
+  Optional[String]   $snssqs_region = undef,
+  Optional[Integer]  $snssqs_max_messages = undef,
+  Optional[Integer]  $wait_time_seconds = undef,
+  Optional[String]   $sqs_queue_url = undef,
+  Optional[String]   $sns_topic_arn = undef,
   Optional[String]   $redis_host = '127.0.0.1',
   Variant[Undef,Integer,Pattern[/^(\d+)$/]] $redis_port = 6379,
   Optional[String]   $redis_password = undef,
@@ -353,7 +368,7 @@ class sensu (
   Boolean            $redis_auto_reconnect = true,
   Optional[Array]    $redis_sentinels = undef,
   Optional[String]   $redis_master = undef,
-  Enum['rabbitmq','redis'] $transport_type = 'rabbitmq',
+  Enum['rabbitmq','redis', 'snssqs'] $transport_type = 'rabbitmq',
   Boolean            $transport_reconnect_on_error = true,
   String             $api_bind = '0.0.0.0',
   String             $api_host = '127.0.0.1',
@@ -576,11 +591,18 @@ class sensu (
   contain ::sensu::enterprise
   contain ::sensu::transport
   contain ::sensu::rabbitmq::config
+  contain ::sensu::snssqs::config
   contain ::sensu::api
   contain ::sensu::redis::config
   contain ::sensu::client
   contain ::sensu::server::service
   contain ::sensu::enterprise::dashboard
+
+
+  $transport_class = $transport_type ? {
+    'snssqs'  => 'snssqs',
+    default   => 'rabbitmq',
+  }
 
   Class['::sensu::package']
   -> Class['::sensu::transport']
