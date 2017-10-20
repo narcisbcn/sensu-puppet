@@ -2,7 +2,7 @@
 #
 # Sets the Sensu sensu config
 #
-class sensu::sensu::config {
+class sensu::snssqs::config
 
   if $::sensu::_purge_config and !$::sensu::server and !$::sensu::client and !$::sensu::enterprise and $::sensu::transport_type != 'sensu' {
     $ensure = 'absent'
