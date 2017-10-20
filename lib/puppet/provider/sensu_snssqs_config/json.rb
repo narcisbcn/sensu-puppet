@@ -37,11 +37,11 @@ Puppet::Type.type(:sensu_snssqs_config).provide(:json) do
   end
 
   def region
-    conf['rabbitmq']['region'] || :absent
+    conf['snssqs']['region'] || :absent
   end
 
   def region=(value)
-    conf['rabbitmq']['region'] = value unless value == :absent
+    conf['snssqs']['region'] = value unless value == :absent
   end
 
   def max_messages
@@ -49,7 +49,7 @@ Puppet::Type.type(:sensu_snssqs_config).provide(:json) do
   end
 
   def max_messages=(value)
-    conf['rabbitmq']['max_messages'] = value.to_i unless value == :absent
+    conf['snssqs']['max_messages'] = value.to_i unless value == :absent
   end
 
   def wait_time_seconds
@@ -57,23 +57,23 @@ Puppet::Type.type(:sensu_snssqs_config).provide(:json) do
   end
 
   def wait_time_seconds=(value)
-    conf['rabbitmq']['wait_time_seconds'] = value.to_i unless value == :absent
+    conf['snssqs']['wait_time_seconds'] = value.to_i unless value == :absent
   end
 
   def sqs_queue_url
-    conf['rabbitmq']['sqs_queue_url'] || :absent
+    conf['snssqs']['sqs_queue_url'] || :absent
   end
 
   def sqs_queue_url=(value)
-    conf['rabbitmq']['sqs_queue_url'] = value unless value == :absent
+    conf['snssqs']['sqs_queue_url'] = value unless value == :absent
   end
 
   def sns_topic_arn
-    conf['rabbitmq']['sns_topic_arn'] || :absent
+    conf['snssqs']['sns_topic_arn'] || :absent
   end
 
   def sns_topic_arn=(value)
-    conf['rabbitmq']['sns_topic_arn'] = value unless value == :absent
+    conf['snssqs']['sns_topic_arn'] = value unless value == :absent
   end
 
 end
