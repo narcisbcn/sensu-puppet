@@ -26,9 +26,9 @@ class sensu::sensu::config {
   $base_path         = $::sensu::conf_dir
   $region            = $::sensu::snssqs_region
   $max_messages      = $::sensu::snssqs_max_messages 
-  $wait_time_seconds = $::sensu::wait_time_seconds
-  $sqs_queue_url     = $::sensu::sqs_queue_url
-  $sns_topic_arn     = $::sensu::sns_topic_arn
+  $wait_time_seconds = $::sensu::snssqs_wait_time_seconds
+  $sqs_queue_url     = $::sensu::snssqs_queue_url
+  $sns_topic_arn     = $::sensu::snssqs_topic_arn
 
   sensu_snssqs_config { $::fqdn:
     ensure            => $ensure,

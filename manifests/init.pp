@@ -100,15 +100,15 @@
 #
 # @param rabbitmq_heartbeat The integer value for the RabbitMQ heartbeat attribute
 #
-# @param 
+# @param snssqs_region AWS region where resources are located
 #
-# @param 
+# @param snssqs_max_messages How long the messages will persist
 #
-# @param 
+# @param snssqs_wait_time_seconds How long to wait
 #
-# @param 
+# @param snssqs_queue_url URL of the SQS
 #
-# @param 
+# @param snssqs_topic_arn ARN topic of the SNS
 #
 # @param redis_host Hostname of redis to be used by sensu
 #
@@ -357,9 +357,9 @@ class sensu (
   Variant[Undef,Integer,Pattern[/^(\d+)$/]] $rabbitmq_heartbeat = undef,
   Optional[String]   $snssqs_region = undef,
   Optional[Integer]  $snssqs_max_messages = undef,
-  Optional[Integer]  $wait_time_seconds = undef,
-  Optional[String]   $sqs_queue_url = undef,
-  Optional[String]   $sns_topic_arn = undef,
+  Optional[Integer]  $snssqs_wait_time_seconds = undef,
+  Optional[String]   $snssqs_queue_url = undef,
+  Optional[String]   $snssqs_topic_arn = undef,
   Optional[String]   $redis_host = '127.0.0.1',
   Variant[Undef,Integer,Pattern[/^(\d+)$/]] $redis_port = 6379,
   Optional[String]   $redis_password = undef,
