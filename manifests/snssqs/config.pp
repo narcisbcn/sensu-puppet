@@ -36,6 +36,6 @@ class sensu::sensu::config {
     region            => $region,
     max_messages      => $max_messages,
     wait_time_seconds => $wait_time_seconds,
-    sqs_queue_url     => $sqs_queue_url
-    sns_topic_arn     => $sns_topic_arn
+    sqs_queue_url     => $sqs_queue_url,
+    sns_topic_arn     => $sns_topic_arn,
   }
