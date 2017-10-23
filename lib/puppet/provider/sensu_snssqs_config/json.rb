@@ -60,20 +60,20 @@ Puppet::Type.type(:sensu_snssqs_config).provide(:json) do
     conf['snssqs']['wait_time_seconds'] = value.to_i unless value == :absent
   end
 
-  def sqs_queue_url
-    conf['snssqs']['sqs_queue_url'] || :absent
+  def consuming_sqs_queue_url
+    conf['snssqs']['consuming_sqs_queue_url'] || :absent
   end
 
-  def sqs_queue_url=(value)
-    conf['snssqs']['sqs_queue_url'] = value unless value == :absent
+  def consuming_sqs_queue_url=(value)
+    conf['snssqs']['consuming_sqs_queue_url'] = value unless value == :absent
   end
 
-  def sns_topic_arn
-    conf['snssqs']['sns_topic_arn'] || :absent
+  def publishing_sns_topic_arn
+    conf['snssqs']['publishing_sns_topic_arn'] || :absent
   end
 
-  def sns_topic_arn=(value)
-    conf['snssqs']['sns_topic_arn'] = value unless value == :absent
+  def publishing_sns_topic_arn=(value)
+    conf['snssqs']['publishing_sns_topic_arn'] = value unless value == :absent
   end
 
 end

@@ -69,7 +69,7 @@ Puppet::Type.newtype(:sensu_snssqs_config) do
     end
   end
 
-  newproperty(:sqs_queue_url) do
+  newproperty(:consuming_sqs_queue_url) do
     desc 'HTTP SQS URL'
 
     def insync?(is)
@@ -78,7 +78,7 @@ Puppet::Type.newtype(:sensu_snssqs_config) do
     end
   end
 
-  newproperty(:sns_topic_arn) do
+  newproperty(:publishing_sns_topic_arn) do
     desc 'ARN SNS URL'
 
     def insync?(is)
