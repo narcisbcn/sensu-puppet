@@ -9,7 +9,7 @@ class sensu::rabbitmq::config {
   } else {
     $ensure = 'present'
   }
-  notify { "FLAG:  $::sensu::transport_type":}
+  notify { "FLAG:  $::sensu::transport_type and $ensure":}
   $ssl_dir = "${sensu::etc_dir}/ssl"
 
   if $::sensu::rabbitmq_ssl_cert_chain or $::sensu::rabbitmq_ssl_private_key {
