@@ -599,11 +599,6 @@ class sensu (
   contain ::sensu::enterprise::dashboard
 
 
-  $transport_class = $transport_type ? {
-    'snssqs'  => 'snssqs',
-    default   => 'rabbitmq',
-  }
-
   Class['::sensu::package']
   -> Class['::sensu::transport']
   -> Class['::sensu::rabbitmq::config']
