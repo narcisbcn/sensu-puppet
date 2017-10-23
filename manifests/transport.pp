@@ -4,10 +4,10 @@
 #
 class sensu::transport {
 
-  if $::sensu::transport_type != 'redis' and $::sensu::transport_type != 'snssqs' {
-    $ensure = 'absent'
-  } else {
+  if $::sensu::transport_type != 'redis' or $::sensu::transport_type != 'snssqs' {
     $ensure = 'present'
+  } else {
+    $ensure = 'absent'
   }
   notify { "transport type: $::sensu::transport_type": }
 
