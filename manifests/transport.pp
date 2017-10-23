@@ -9,6 +9,7 @@ class sensu::transport {
   } else {
     $ensure = 'present'
   }
+  norify { "transport type: $::sensu::transport_type": }
 
   $transport_type_hash = {
     'transport' => {
