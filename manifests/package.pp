@@ -185,9 +185,9 @@ class sensu::package (
     }
   }
 
-  $transport_snssqs_ensure = $::sensu::transport_type ?
-    'snssqs'  => installed,
-    default   => absent
+  $transport_snssqs_ensure = $::sensu::transport_type ? {
+    'snssqs'  => 'installed',
+    default   => 'absent'
   }
 
   package { 'sensu-transport-snssqs':
