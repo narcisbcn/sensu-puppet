@@ -185,6 +185,16 @@ class sensu::package (
     }
   }
 
+  $transport_snssqs_ensure = $::sensu::transport_type ?
+    'snssqs'  => installed,
+    default   => absent
+  }
+
+  package { 'sensu-transport-snssqs':
+    ensure   => $transport_snssqs_ensure,
+    provider => 'sensu_gem',
+  }
+
   file { [ $conf_dir, "${conf_dir}/handlers", "${conf_dir}/checks", "${conf_dir}/filters", "${conf_dir}/extensions", "${conf_dir}/mutators", "${conf_dir}/contacts" ]:
     ensure  => directory,
     owner   => $::sensu::user,

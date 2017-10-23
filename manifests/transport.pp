@@ -9,7 +9,6 @@ class sensu::transport {
   } else {
     $ensure = 'absent'
   }
-  notify { "transport type: $::sensu::transport_type": }
 
   $transport_type_hash = {
     'transport' => {

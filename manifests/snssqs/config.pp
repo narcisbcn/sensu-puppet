@@ -10,11 +10,6 @@ class sensu::snssqs::config {
     $ensure = 'present'
   }
 
-  package { 'sensu-transport-snssqs':
-    ensure         => 'installed',
-    provider       => 'sensu_gem',
-  }
-
   file { "${sensu::conf_dir}/snssqs.json":
     ensure => $ensure,
     owner  => $::sensu::user,
