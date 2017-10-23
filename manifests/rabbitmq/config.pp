@@ -4,12 +4,11 @@
 #
 class sensu::rabbitmq::config {
 
-  if $::sensu::_purge_config and !$::sensu::server and !$::sensu::client and !$::sensu::enterprise and $::sensu::transport_type != 'rabbitmq' {
+  if $::sensu::_purge_config  and !$::sensu::enterprise and $::sensu::transport_type != 'rabbitmq' {
     $ensure = 'absent'
   } else {
     $ensure = 'present'
   }
-  notify { "FLAG:  $::sensu::transport_type and $ensure, server: $::sensu::server, client: $::sensu::client, EN: $::sensu::enterprise, purge: $::sensu::_purge_config":}
   $ssl_dir = "${sensu::etc_dir}/ssl"
 
   if $::sensu::rabbitmq_ssl_cert_chain or $::sensu::rabbitmq_ssl_private_key {
