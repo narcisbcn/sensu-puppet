@@ -71,6 +71,7 @@ Puppet::Type.newtype(:sensu_snssqs_config) do
 
   newproperty(:consuming_sqs_queue_url) do
     desc 'HTTP SQS URL'
+    defaultto { 'https://' }
 
     def insync?(is)
       return should == is if should.is_a?(Symbol)
@@ -80,6 +81,7 @@ Puppet::Type.newtype(:sensu_snssqs_config) do
 
   newproperty(:publishing_sns_topic_arn) do
     desc 'ARN SNS URL'
+    defaultto { 'arn:aws:sns:' }
 
     def insync?(is)
       return should == is if should.is_a?(Symbol)
